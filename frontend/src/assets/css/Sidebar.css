@@ -1,6 +1,7 @@
-.sidebar-body {
-    padding-left: 37%;
+.sidebar-body-subitem li {
+  list-style: circle;
 }
-.sidebar-body-subitem {
-    padding-left: 9%;
+svg {
+    color: #2F3A94;
+    font-size: 1.2rem;
 }

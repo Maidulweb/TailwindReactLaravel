@@ -1,6 +1,10 @@
+import { CgProfile } from "react-icons/cg";
+import { MdLocationSearching } from "react-icons/md";
+import { TbVirusSearch } from "react-icons/tb";
 export const SidebarItem = [
   {
     title: "Profile",
+    icon: <CgProfile />,
     subSidebar: [
       {
         name: "Login",
@@ -18,6 +22,7 @@ export const SidebarItem = [
   },
   {
     title: "Pages",
+    icon: <TbVirusSearch />,
     subSidebar: [
       {
         name: "Home",
@@ -34,6 +39,28 @@ export const SidebarItem = [
       {
         name: "Contact",
         link: "/contact",
+      },
+    ],
+  },
+  {
+    title: "Extra",
+    icon: <MdLocationSearching />,
+    subSidebar: [
+      {
+        name: "Search",
+        link: "/search",
+      },
+      {
+        name: "Error",
+        link: "/error",
+      },
+      {
+        name: "Chart",
+        link: "/chart",
+      },
+      {
+        name: "Form",
+        link: "/form",
       },
     ],
   },
