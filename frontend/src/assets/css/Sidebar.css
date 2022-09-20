@@ -5,3 +5,9 @@ svg {
     color: #2F3A94;
     font-size: 1.2rem;
 }
+.sidebar-item {
+  background: linear-gradient(#fff, #b9b9b9, #CBD5E1);
+    margin-right: 26px;
+    padding-left: 10px;
+    border-radius: 6px 6px 1px 1px;
+}

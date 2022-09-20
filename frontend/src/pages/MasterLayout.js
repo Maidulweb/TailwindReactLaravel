@@ -10,9 +10,7 @@ const MasterLayout = () => {
     <div>
       <div className="flex">
         {activeSidebar && (
-          <div className="sidebar bg-slate-300 h-screen w-2/4 lg:w-1/6">
             <Sidebar />
-          </div>
         )}
         <div className={activeSidebar ? `w-5/6`: `w-full`}>
           <Header />

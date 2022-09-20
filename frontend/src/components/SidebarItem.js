@@ -1,10 +1,13 @@
 import { CgProfile } from "react-icons/cg";
 import { MdLocationSearching } from "react-icons/md";
 import { TbVirusSearch } from "react-icons/tb";
+import { IoIosArrowDown } from "react-icons/io";
 export const SidebarItem = [
   {
+    id: 0,
     title: "Profile",
     icon: <CgProfile />,
+    sidbaricon: <IoIosArrowDown />,
     subSidebar: [
       {
         name: "Login",
@@ -21,8 +24,10 @@ export const SidebarItem = [
     ],
   },
   {
+    id: 1,
     title: "Pages",
     icon: <TbVirusSearch />,
+    sidbaricon: <IoIosArrowDown />,
     subSidebar: [
       {
         name: "Home",
@@ -43,8 +48,10 @@ export const SidebarItem = [
     ],
   },
   {
+    id: 2,
     title: "Extra",
     icon: <MdLocationSearching />,
+    sidbaricon: <IoIosArrowDown />,
     subSidebar: [
       {
         name: "Search",
