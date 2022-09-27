@@ -4,51 +4,51 @@ import { TbVirusSearch } from "react-icons/tb";
 import { IoIosArrowDown } from "react-icons/io";
 export const SidebarItem = [
   {
-    id: 0,
-    title: "Profile",
+    title: "Supplier",
     icon: <CgProfile />,
     sidbaricon: <IoIosArrowDown />,
     subSidebar: [
       {
-        name: "Login",
-        link: "/login",
+        name: "Add Supplier",
+        link: "/add_supplier",
       },
       {
-        name: "Register",
-        link: "/register",
-      },
-      {
-        name: "Profile",
-        link: "/profile",
+        name: "Supplier List",
+        link: "/list_supplier",
       },
     ],
   },
   {
-    id: 1,
-    title: "Pages",
-    icon: <TbVirusSearch />,
+    title: "Category",
+    icon: <CgProfile />,
     sidbaricon: <IoIosArrowDown />,
     subSidebar: [
       {
-        name: "Home",
-        link: "/",
+        name: "Add Category",
+        link: "/add_category",
       },
       {
-        name: "Service",
-        link: "/service",
-      },
-      {
-        name: "About",
-        link: "/about",
-      },
-      {
-        name: "Contact",
-        link: "/contact",
+        name: "Category List",
+        link: "/list_category",
       },
     ],
   },
   {
-    id: 2,
+    title: "Product",
+    icon: <CgProfile />,
+    sidbaricon: <IoIosArrowDown />,
+    subSidebar: [
+      {
+        name: "Add Product",
+        link: "/add_product",
+      },
+      {
+        name: "Product List",
+        link: "/list_product",
+      },
+    ],
+  },
+  {
     title: "Extra",
     icon: <MdLocationSearching />,
     sidbaricon: <IoIosArrowDown />,

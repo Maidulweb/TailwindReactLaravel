@@ -8,7 +8,7 @@ import SidebarSub from "./SidebarSub";
 
 const Sidebar = () => {
   return (
-    <div className="sidebar bg-slate-300 h-screen w-2/4 lg:w-1/6">
+    <div>
       <div className="logo h-16">
         <img className="min-h-full" src={Logo} alt="" />
       </div>
@@ -21,9 +21,13 @@ const Sidebar = () => {
         </div>
       </div>
       <hr />
-      <div className="sidebar-body pl-10 pt-4">
+      <div className="sidebar-body pl-6 pt-4">
         {SidebarItem.map((item, index) => {
-          return <SidebarSub item={item} key={index} />;
+          return (
+            <div key={index}>
+              <SidebarSub item={item} key={index} />
+            </div>
+          );
         })}
       </div>
     </div>

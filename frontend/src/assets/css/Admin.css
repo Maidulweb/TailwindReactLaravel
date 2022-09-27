@@ -1,0 +1,32 @@
+body {
+    background-color: #EFF0F5;
+}
+.main-form {
+    height: 100vh;
+}
+.admin-login-header {
+    color: #2F3A94;
+}
+.sub-form {
+    background-color: #FFFFFF;
+}
+.sub-form hr {
+    background-color: #ddd;
+    padding: 2px;
+}
+.sub-form input {
+    border: 1px solid #ddd;
+    width: 100%;
+}
+.sub-form input:focus, .sub-form input:hover, .sub-form input:active, .sub-form input:visited, .sub-form input:target, .sub-form input:focus-within, .sub-form input:focus-visible {
+    border: 1px solid gray;
+    outline: 0;
+}
+.sub-form button {
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2F3A94;
+    background-color: #ddd;
+}

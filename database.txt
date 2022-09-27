@@ -1,0 +1,10 @@
+Product-
+1.Title
+2.Multi Image
+3.Ratings
+4.Share
+5.Like count
+6.Brand name (Default-No Brand)
+7.Category
+8.Price
+9.Discount Price (Next add %)

@@ -17,11 +17,11 @@ const SidebarSub = ({item}) => {
           <div className="mt-1.5 pr-2">{item.sidbaricon}</div>
         </div>
         {SubState && (
-          <ul className="sidebar-body-subitem pt-1 pb-5 pl-16">
-            {item.subSidebar.map((itemSub, indexSub) => {
+          <ul className="sidebar-body-subitem pt-1 pl-12">
+            {item.subSidebar.map((item, index) => {
               return (
-                <li key={indexSub} item={itemSub} className="text-base">
-                  <Link to={itemSub.link}>{itemSub.name}</Link>
+                <li key={index} className="text-base pt-2">
+                  <Link to={item.link}>{item.name}</Link>
                 </li>
               );
             })}
