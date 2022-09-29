@@ -17,9 +17,12 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::middleware('throttle:3,10')->group(function () {
+/* Route::middleware('throttle:3,10')->group(function () {
     Route::post('/login', [AdminController::class, 'login']);
-}); 
+});  */
+
+Route::post('/login', [AdminController::class, 'login']);
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AdminController::class, 'logout']);
 }); 

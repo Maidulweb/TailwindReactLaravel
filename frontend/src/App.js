@@ -39,11 +39,6 @@ axios.interceptors.request.use(function (config) {
 });
 
 function App() {
-  useEffect(() => {
-    return () => {
-      localStorage.clear();
-    };
-  });
   return (
     <div className="App">
       <BrowserRouter>

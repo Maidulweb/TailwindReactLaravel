@@ -1,3 +1,11 @@
+
 .add-button {
     border: 1px solid;
+}
+.add-image-color {
+    background-color: #efececbd;
+}
+.remove-shadow {
+    box-shadow: inset 0px 0px 2px rgb(220 38 38 / 90%);
+    background: #fff;
 }
