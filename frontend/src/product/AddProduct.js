@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { MdOutlineClose } from "react-icons/md";
@@ -7,88 +7,91 @@ import ProductInputImagebg from '.././assets/images/product/ProductInputImagebg.
 
 const AddProduct = () => {
   const navigate = useNavigate();
-  /* Image Preview */
-  const [image, setImage] = useState('');
+  /* Image Preview State */
+  const [image, setImage] = useState("");
   const [imageUpload, setImageUpload] = useState(false);
-  const [image2, setImage2] = useState('');
+  const [image2, setImage2] = useState("");
   const [imageUpload2, setImageUpload2] = useState(false);
   const [image3, setImage3] = useState("");
   const [imageUpload3, setImageUpload3] = useState(false);
-   const [image4, setImage4] = useState("");
-   const [imageUpload4, setImageUpload4] = useState(false);
+  const [image4, setImage4] = useState("");
+  const [imageUpload4, setImageUpload4] = useState(false);
   const [image5, setImage5] = useState("");
   const [imageUpload5, setImageUpload5] = useState(false);
 
+  /* Supplier State */
+  const [supplier, setSupplier] = useState([]);
+  /* Category State */
+  const [category, setCategory] = useState([]);
+
+  /* Product Input */
   const [product, setProduct] = useState({
-    name: "",
-    status: "",
+    title: "",
   });
   /* Image Preview */
 
- const handleImage = (e) => {
-        if(e.target.files && e.target.files[0]) {
+  const handleImage = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      let reader = new FileReader();
 
-          let reader = new FileReader();
+      reader.onload = (e) => {
+        setImage(e.target.result);
+        setImageUpload(true);
+      };
 
-          reader.onload = (e) => {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
 
-           setImage(e.target.result)
-           setImageUpload(true);
-          }
-          
-          reader.readAsDataURL(e.target.files[0])
-        }
-  } 
+  const handleImage2 = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      let reader = new FileReader();
 
-   const handleImage2 = (e) => {
-     if (e.target.files && e.target.files[0]) {
-       let reader = new FileReader();
+      reader.onload = (e) => {
+        setImage2(e.target.result);
+        setImageUpload2(true);
+      };
 
-       reader.onload = (e) => {
-         setImage2(e.target.result);
-         setImageUpload2(true);
-       };
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
 
-       reader.readAsDataURL(e.target.files[0]);
-     }
-   }; 
-   
-    const handleImage3 = (e) => {
-      if (e.target.files && e.target.files[0]) {
-        let reader = new FileReader();
+  const handleImage3 = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      let reader = new FileReader();
 
-        reader.onload = (e) => {
-          setImage3(e.target.result);
-          setImageUpload3(true);
-        };
+      reader.onload = (e) => {
+        setImage3(e.target.result);
+        setImageUpload3(true);
+      };
 
-        reader.readAsDataURL(e.target.files[0]);
-      }
-    }; 
-     const handleImage4 = (e) => {
-       if (e.target.files && e.target.files[0]) {
-         let reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
+  const handleImage4 = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      let reader = new FileReader();
 
-         reader.onload = (e) => {
-           setImage4(e.target.result);
-           setImageUpload4(true);
-         };
+      reader.onload = (e) => {
+        setImage4(e.target.result);
+        setImageUpload4(true);
+      };
 
-         reader.readAsDataURL(e.target.files[0]);
-       }
-     }; 
-      const handleImage5 = (e) => {
-        if (e.target.files && e.target.files[0]) {
-          let reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
+  const handleImage5 = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      let reader = new FileReader();
 
-          reader.onload = (e) => {
-            setImage5(e.target.result);
-            setImageUpload5(true);
-          };
+      reader.onload = (e) => {
+        setImage5(e.target.result);
+        setImageUpload5(true);
+      };
 
-          reader.readAsDataURL(e.target.files[0]);
-        }
-      }; 
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
   const handleRemoveImage = () => {
     setImage("");
     setImageUpload(false);
@@ -98,17 +101,39 @@ const AddProduct = () => {
     setImageUpload2(false);
   };
   const handleRemoveImage3 = () => {
-     setImage3("");
-     setImageUpload3(false);
-   };
+    setImage3("");
+    setImageUpload3(false);
+  };
   const handleRemoveImage4 = () => {
-      setImage4("");
-      setImageUpload4(false);
-    };
+    setImage4("");
+    setImageUpload4(false);
+  };
   const handleRemoveImage5 = () => {
-       setImage5("");
-       setImageUpload5(false);
-     };
+    setImage5("");
+    setImageUpload5(false);
+  };
+  /* Supplier Show */
+  useEffect(() => {
+    fetchSupplier();
+  }, []);
+
+  const fetchSupplier = async () => {
+    await axios.get("/api/list_supplier").then((res) => {
+      setSupplier(res.data);
+    });
+  };
+
+  /* Category Show */
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+
+  const fetchCategory = async () => {
+    await axios.get("/api/list_category").then((res) => {
+      setCategory(res.data);
+    });
+  };
+
 
   const handleProduct = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
@@ -362,10 +387,65 @@ const AddProduct = () => {
                 className="w-full rounded pl-3 py-2"
                 type="text"
                 placeholder="Add Product"
-                name="name"
-                value={product.name}
+                name="title"
+                value={product.title}
                 onChange={handleProduct}
               />
+            </div>
+
+            <div className="mt-4">
+              {/* <label
+                for="countries_multiple"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+              >
+                Select an option
+              </label> */}
+              <select
+                multiple=""
+                id="countries_multiple"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option>Choose Supplier</option>
+                {supplier.map((item, index) => {
+                  return (
+                    <option key={index} value={item.name}>
+                      {item.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <div className="mt-4">
+              {/* <label
+                for="countries_multiple"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+              >
+                Select an option
+              </label> */}
+              <select
+                multiple=""
+                id="countries_multiple"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option>Choose Category</option>
+                {category.map((item, index) => {
+                  return (
+                    <option key={index} value={item.name}>
+                      {item.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <div className="mt-4">
+              <textarea
+                rows="3"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Description"
+                name="description"
+                value={product.description}
+                onChange={handleProduct}
+              ></textarea>
             </div>
             <div className="mt-4">
               <select
@@ -374,7 +454,7 @@ const AddProduct = () => {
                 value={product.status}
                 onChange={handleProduct}
               >
-                <option>Please Select</option>
+                <option>Select Status</option>
                 <option value="1">Active</option>
                 <option value="0">Deactive</option>
               </select>

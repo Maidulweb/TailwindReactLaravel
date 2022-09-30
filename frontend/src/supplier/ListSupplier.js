@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import '.././assets/css/supplier/ListSupplier.css'
 
-const ListSupplier = () => {
+ const ListSupplier = () => {
  const [supplier, setSupplier] = useState([]);
 
  useEffect(() => {
