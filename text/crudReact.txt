@@ -1,0 +1,19 @@
+ const [supplier, setSupplier] = useState([]);
+
+ useEffect(() => {
+   fetchProducts();
+ }, []);
+
+ const fetchProducts = async () => {
+  await axios.get("/api/list_supplier").then((res ) => {
+    setSupplier(res.data);
+  });
+ }
+
+{supplier.map((item, index) => {
+        return (
+          <div key={index}>
+            <p>{item.name}</p>
+          </div>
+        );
+      })} 

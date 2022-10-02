@@ -1,0 +1,82 @@
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
+   $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|unique:users|max:255',
+            'password' => 'required',
+        ]);
+ 
+        if ($validator->fails()) {
+            return response()->json([
+                'validation_errors' => $validator->messages()
+            ]);
+        }
+ 
+
+$user->password = Hash::make($request->input('password'));
+Route::post('/login', [AuthController::class, 'login']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
+
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\RateLimiter;
+use App\Models\User;
+
+Auth::user()->tokens()->delete();
+         
+            return response()->json([
+                'status' => 203,
+                'success' => 'Logout Successfully'
+            ]);
+
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+
+     $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+ 
+        if ($validator->fails()) {
+            return response()->json([
+                'validation_errors' => $validator->messages()
+            ]);
+        }
+
+$user = User::where('name', $request->name)->first();
+ 
+        if (! $user || ! Hash::check($request->password, $user->password)) {
+           
+            return response()->json([
+                'status' => 200,
+                'warning' => 'The provided credentials are incorrect!!!!!'
+            ]);
+        }
+
+        $token = $user->createToken($user->email.'_Token')->plainTextToken;
+
+        return response()->json([
+            'status' => 201
+        ]);
+
+$user = new User;
+        $user->name = $request->input('name');
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
+        
+        $token = $user->createToken($user->email.'_Token')->plainTextToken;
+
+        return response()->json([
+            'status' => 200,
+            'token' => $token,
+            'token_name' => $user->name,
+        ]);
+
+return response()->json(Supplier::get());

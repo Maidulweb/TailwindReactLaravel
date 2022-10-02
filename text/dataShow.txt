@@ -1,0 +1,10 @@
+  /* Category Show */
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+
+  const fetchCategory = async () => {
+    await axios.get("/api/list_category").then((res) => {
+      setCategory(res.data);
+    });
+  };

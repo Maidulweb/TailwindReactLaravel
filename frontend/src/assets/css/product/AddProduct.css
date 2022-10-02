@@ -9,3 +9,9 @@
     box-shadow: inset 0px 0px 2px rgb(220 38 38 / 90%);
     background: #fff;
 }
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(17 24 39 / 100%) !important;
+  opacity: 1 !important; /* Firefox */
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}

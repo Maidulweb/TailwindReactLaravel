@@ -25,9 +25,7 @@ const AddProduct = () => {
   const [category, setCategory] = useState([]);
 
   /* Product Input */
-  const [product, setProduct] = useState({
-    title: "",
-  });
+  const [product, setProduct] = useState('');
   /* Image Preview */
 
   const handleImage = (e) => {
@@ -140,7 +138,18 @@ const AddProduct = () => {
   };
 
   const data = {
-    name: product.name,
+    image: product.image,
+    image_two: product.image_two,
+    image_three: product.image_three,
+    image_four: product.image_four,
+    image_five: product.image_five,
+    title: product.title,
+    slug: product.slug,
+    supplier: product.supplier,
+    category: product.category,
+    description: product.description,
+    price: product.price,
+    discount_price: product.discount_price,
     status: product.status,
   };
 
@@ -164,7 +173,7 @@ const AddProduct = () => {
               <label
                 style={{ backgroundImage: `url(${ProductInputImagebg})` }}
                 className="input-image-bg bg-cover bg-no-repeat bg-center h-60 rounded  w-full m-auto mx-0 flex justify-center flex-col items-center relative"
-                htmlFor="image_one"
+                htmlFor="image"
               >
                 {!imageUpload ? (
                   <>
@@ -175,7 +184,7 @@ const AddProduct = () => {
                       className="opacity-0 absolute top-0 bottom-0 left-0 right-0  cursor-pointer"
                       multiple
                       type="file"
-                      name="image_one"
+                      name="image"
                       accept=".jpg, .png"
                       onChange={handleImage}
                     />
@@ -384,15 +393,24 @@ const AddProduct = () => {
           <div className="w-2/3 ml-5">
             <div className="">
               <input
-                className="w-full rounded pl-3 py-2"
+                className="w-full rounded pl-3 py-2 placeholder-red-100::placeholder"
                 type="text"
-                placeholder="Add Product"
+                placeholder="Add Product Title"
                 name="title"
                 value={product.title}
                 onChange={handleProduct}
               />
             </div>
-
+            <div className="mt-4">
+              <input
+                className="w-full rounded pl-3 py-2"
+                type="text"
+                placeholder="Add Tag ( Type and make comma to separate tages )"
+                name="slug"
+                value={product.slug}
+                onChange={handleProduct}
+              />
+            </div>
             <div className="mt-4">
               {/* <label
                 for="countries_multiple"
@@ -402,8 +420,7 @@ const AddProduct = () => {
               </label> */}
               <select
                 multiple=""
-                id="countries_multiple"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option>Choose Supplier</option>
                 {supplier.map((item, index) => {
@@ -425,7 +442,7 @@ const AddProduct = () => {
               <select
                 multiple=""
                 id="countries_multiple"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option>Choose Category</option>
                 {category.map((item, index) => {
@@ -440,7 +457,7 @@ const AddProduct = () => {
             <div className="mt-4">
               <textarea
                 rows="3"
-                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Description"
                 name="description"
                 value={product.description}
@@ -448,8 +465,29 @@ const AddProduct = () => {
               ></textarea>
             </div>
             <div className="mt-4">
+              <input
+                className="w-full rounded pl-3 py-2"
+                type="number"
+                placeholder="Add Price"
+                name="price"
+                value={product.price}
+                onChange={handleProduct}
+              />
+            </div>
+            <div className="mt-4">
+              <input
+                className="w-full rounded pl-3 py-2"
+                type="number"
+                placeholder="Add Discount Price"
+                name="discount_price"
+                value={product.discount_price}
+                onChange={handleProduct}
+              />
+            </div>
+
+            <div className="mt-4">
               <select
-                className="w-full rounded px-3 py-2"
+                className="border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 name="status"
                 value={product.status}
                 onChange={handleProduct}
@@ -462,7 +500,7 @@ const AddProduct = () => {
           </div>
         </div>
         <button
-          className="font-bold uppercase border-slate-400 border-solid border bg-slate-300 w-full rounded pl-3 py-1 mt-5"
+          className="font-bold text-slate-50 uppercase border-blue-400 border-solid border bg-blue-600 w-full rounded pl-3 py-1 mt-5"
           type="submit"
         >
           Add Product
